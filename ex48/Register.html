@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <title>Register</title>
+        <style>
+            body
+            {
+                background-color: #99CCFF;
+            }
+            hr
+            {
+                border: none;
+                border-top: 2px solid #777;
+                margin-bottom: 22px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="text-align: center;"><img src="hinh/Jackson.gif"></div>
+        <h1 style="text-align: center;">Register Form</h1>
+        <p style="text-align: center;">Register your Jackson Electronics product here</p>
+        <form onsubmit="alert('Đăng ký thành công!'); return false;">
+            <table align="center">
+                <tr>
+                    <td>First Name:</td>
+                    <td>
+                    <input type="text" name="firstname" id="normal">
+                    &nbsp;
+                    Last Name:
+                    <input type="text" name="lastname" id="lastname">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address #1:</td>
+                    <td><input type="text" name="address1" id="address1"></td>
+                </tr>
+                <tr>
+                    <td>Address #2:</td>
+                    <td><input type="text" name="address2" id="address2"></td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        <input type="text" name="city" id="city">
+                        &nbsp;State:
+                        <input type="text" name="state" id="state">
+                        &nbsp;Zip:
+                        <input type="text" name="zip" id="zip">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td><input type="text" name="country" id="country"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><hr></td>
+                </tr>
+                <tr>
+                    <td>Product:</td>
+                    <td>
+                        <select name="product">
+                            <option value="ScanMaster">ScanMaster</option>
+                            <option value="Printer">Printer</option>
+                            <option value="Monitor">Monitor</option>
+                            <option value="Keyboard">Keyboard</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date Purchased:</td>
+                    <td><input type="text" name="datePurchased" id="datePurchased"></td>
+                </tr>
+                <tr>
+                    <td>Serial #:</td>
+                    <td><input type="text" name="serial" id="serial"></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;">Used for:</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="radio"
+                                        name="usedfor"
+                                        value="Home">
+                                    Home
+                                </td>
+
+                                <td>
+                                    <input type="radio"
+                                        name="usedfor"
+                                        value="Educational">
+                                    Educational Institution
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="radio"
+                                        name="usedfor"
+                                        value="Business">
+                                    Business
+                                </td>
+
+                                <td>
+                                    <input type="radio"
+                                        name="usedfor"
+                                        value="Other">
+                                    Other
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="radio"
+                                        name="usedfor"
+                                        value="Government">
+                                    Government
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;">
+                        System (check all that apply):
+                    </td>
+
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="checkbox"
+                                        name="system"
+                                        value="Windows">
+                                    Windows
+                                </td>
+
+                                <td>
+                                    <input type="checkbox"
+                                        name="system"
+                                        value="UNIX">
+                                    UNIX
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="checkbox"
+                                        name="system"
+                                        value="Macintosh">
+                                    Macintosh
+                                </td>
+
+                                <td>
+                                    <input type="checkbox"
+                                        name="system"
+                                        value="Other">
+                                    Other
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Comments?:
+                    </td>
+
+                    <td>
+                        <textarea name="comments"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+
+                        <input type="submit"
+                            value="Click to register">
+
+                        &nbsp;
+
+                        <input type="reset"
+                            value="Click to cancel">
+
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

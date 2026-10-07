@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Classifieds Search Form</title>
+        <style>
+            body {
+                font-family: "Times New Roman", serif;
+                font-size: 18px;
+            }
+
+            .form-container {
+                width: 700px;
+                margin: 0 auto;
+                padding: 20px 25px 25px 25px;
+                background-color: #ccffff;
+                border: 3px solid #0066ff;
+                box-sizing: border-box;
+            }
+
+            h1 {
+                color: red;
+                font-size: 30px;
+                margin-top: 0;
+                margin-bottom: 25px;
+            }
+
+            hr {
+                border: none;
+                border-top: 2px solid #777;
+                margin-bottom: 22px;
+            }
+
+            .question {
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+
+            .radio-table,
+            .checkbox-table {
+                border-collapse: collapse;
+                margin-left: 5px;
+            }
+
+            .radio-table td {
+                padding: 2px 15px 2px 0;
+            }
+
+            .checkbox-table td {
+                padding: 2px 20px 2px 0;
+            }
+
+            input[type="radio"],
+            input[type="checkbox"] {
+                width: 16px;
+                height: 16px;
+                vertical-align: middle;
+            }
+
+            .date-row {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .date-box {
+                width: 180px;
+                height: 25px;
+                font-size: 16px;
+                padding-left: 5px;
+                margin: 0 5px;
+                box-sizing: border-box;
+            }
+
+            .keyword-box {
+                width: 100%;
+                height: 28px;
+                font-size: 17px;
+                margin-top: 5px;
+                box-sizing: border-box;
+            }
+
+            .options {
+                margin-top: 25px;
+            }
+
+            .buttons {
+                margin-top: 25px;
+            }
+
+            .btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-family: "Times New Roman", serif;
+                font-size: 18px;
+                font-weight: bold;
+                margin-right: 35px;
+                text-align: center;
+            }
+
+            .btn img {
+                object-fit: contain;
+            }
+
+            .icon {
+                display: block;
+                font-family: Arial, sans-serif;
+                font-size: 42px;
+                line-height: 35px;
+            }
+
+            .search {
+                color: green;
+            }
+
+            .help {
+                color: #0033cc;
+            }
+
+            .cancel {
+                color: #ff0066;
+            }
+        </style>
+
+        <script>
+            // Search -> giả lập Search
+            function searchForm() {
+                alert("Search");
+            }
+
+            // Help -> mở trang Help
+            function helpForm() {
+                window.open("help.html", "_blank");
+            }
+
+            // Cancel -> xóa trắng dữ liệu trên Form
+            function cancelForm() {
+                document.getElementById("searchForm").reset();
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <form id="searchForm" class="form-container">
+
+            <h1>Online Classifieds Search Form</h1>
+
+            <hr>
+
+            <div class="question">
+                1) Search for a classified in the following sections:
+            </div>
+
+            <table class="radio-table">
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" name="section" value="Employment">
+                            Employment
+                        </label>
+                    </td>
+
+                    <td>
+                        <label>
+                            <input type="radio" name="section" value="Personal">
+                            Personal
+                        </label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" name="section" value="For Sale">
+                            For Sale
+                        </label>
+                    </td>
+
+                    <td>
+                        <label>
+                            <input type="radio" name="section" value="Miscellaneous">
+                            Miscellaneous
+                        </label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" name="section" value="Housing">
+                            Housing
+                        </label>
+                    </td>
+
+                    <td>
+                        <label>
+                            <input type="radio" name="section" value="All">
+                            All of the above
+                        </label>
+                    </td>
+                </tr>
+            </table>
+
+
+            <div class="question" style="margin-top: 25px;">
+                2) Search the following publications:
+            </div>
+
+            <table class="checkbox-table">
+                <tr>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="publication" value="Midwest Times">
+                            Midwest times
+                        </label>
+                    </td>
+
+                    <td>
+                        <label>
+                            <input type="checkbox" name="publication" value="Modern News">
+                            Modern News
+                        </label>
+                    </td>
+
+                    <td>
+                        <label>
+                            <input type="checkbox" name="publication" value="Employment Today">
+                            Employment Today
+                        </label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="publication" value="Great Lakes Classifieds">
+                            Great Lakes Classifieds
+                        </label>
+                    </td>
+
+                    <td>
+                        <label>
+                            <input type="checkbox" name="publication" value="Middleton Daily">
+                            Middleton Daily
+                        </label>
+                    </td>
+
+                    <td>
+                        <label>
+                            <input type="checkbox" name="publication" value="Cashtown Daily News">
+                            Cashtown Daily News
+                        </label>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="date-row">
+                <b>3) From to</b>
+
+                <input
+                    type="text"
+                    name="fromDate"
+                    class="date-box"
+                    placeholder="mm/dd/yy"
+                >
+
+                <b>to</b>
+
+                <input
+                    type="text"
+                    name="toDate"
+                    class="date-box"
+                    placeholder="mm/dd/yy"
+                >
+            </div>
+
+            <div class="question">
+                4) Enter a few keywords to describe the classified.
+            </div>
+
+            <input
+                type="text"
+                name="keywords"
+                class="keyword-box"
+            >
+
+            <div class="question options">
+                5) Click one of the options below:
+            </div>
+
+            <div class="buttons">
+                <!-- Search -->
+                <button type="button" class="btn search" onclick="searchForm()">
+                    <img src="hinh/Search.gif" alt="Search">
+                </button>
+                <!-- Help -->
+                <button type="button" class="btn help" onclick="helpForm()">
+                    <img src="hinh/Help.gif" alt="Help">
+                </button>
+                <!-- Cancel -->
+                <button type="button" class="btn cancel" onclick="cancelForm()">
+                    <img src="hinh/Cancel.gif" alt="Cancel">
+                </button>
+            </div>
+        </form>
+    </body>
+</html>
