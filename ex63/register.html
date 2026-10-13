@@ -1,0 +1,253 @@
+<html>
+    <head>
+        <title>Đăng ký thành viên</title>
+       
+        <script>
+            // Tao danh sach ngay, thang, nam
+            function loadDate() {
+                var day = document.getElementById("day");
+                var month = document.getElementById("month");
+                var year = document.getElementById("year");
+                var currentYear = new Date().getFullYear();
+                for (var i = 1; i <= 31; i++) {
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = (i < 10 ? "0" : "") + i;
+                    day.appendChild(option);
+                }
+
+                for (var i = 1; i <= 12; i++) {
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    month.appendChild(option);
+                }
+
+                for (var i = 1900; i <= currentYear; i++) {
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    year.appendChild(option);
+                }
+            }
+
+            // Ham lay gia tri radio
+            function getRadioValue(name) {
+                var radios = document.getElementsByName(name);
+
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) {
+                        return radios[i].value;
+                    }
+                }
+
+                return "";
+            }
+
+            // Ham dang ky thanh vien
+            function registerMember() {
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+
+                var day = document.getElementById("day").value;
+                var month = document.getElementById("month").value;
+                var year = document.getElementById("year").value;
+
+                var gender = getRadioValue("gender");
+                var color = getRadioValue("color");
+
+                // Kiem tra ten
+                if (name.trim() == "") {
+                    alert("Vui long nhap ten!");
+                    return;
+                }
+
+                // Kiem tra email
+                if (email.trim() == "" ||
+                    email.indexOf("@") == -1 ||
+                    email.indexOf(".") == -1) {
+                    alert("Email khong duoc bo trong va phai hop le!");
+                    return;
+                }
+
+                // Kiem tra ngay sinh
+                var date = new Date(year, month - 1, day);
+
+                if (date.getDate() != Number(day) ||
+                    date.getMonth() != Number(month) - 1 ||
+                    date.getFullYear() != Number(year)) {
+                    alert("Ngay sinh khong hop le!");
+                    return;
+                }
+
+                // Lay so thich
+                var hobbies = document.getElementsByName("hobby");
+                var hobbyText = "";
+
+                for (var i = 0; i < hobbies.length; i++) {
+                    if (hobbies[i].checked) {
+                        if (hobbyText != "") {
+                            hobbyText = hobbyText + ", ";
+                        }
+
+                        hobbyText = hobbyText + hobbies[i].value;
+                    }
+                }
+
+                // Tao object thanh vien
+                var member = {
+                    name: name,
+                    email: email,
+                    gender: gender,
+                    birthday: day + "/" + month + "/" + year,
+                    hobby: hobbyText,
+                    color: color
+                };
+
+                // Tao hang moi trong bang
+                var tbody = document.getElementById("tbMembers");
+                var tr = document.createElement("tr");
+
+                // Tao cac o td
+                var tdName = document.createElement("td");
+                var tdEmail = document.createElement("td");
+                var tdGender = document.createElement("td");
+                var tdBirthday = document.createElement("td");
+                var tdHobby = document.createElement("td");
+                var tdColor = document.createElement("td");
+
+                // Gan gia tri cho cac o
+                tdName.innerHTML = member.name;
+                tdEmail.innerHTML = member.email;
+                tdGender.innerHTML = member.gender;
+                tdBirthday.innerHTML = member.birthday;
+                tdHobby.innerHTML = member.hobby;
+                tdColor.innerHTML = member.color;
+
+                // Dua cac td vao tr
+                tr.appendChild(tdName);
+                tr.appendChild(tdEmail);
+                tr.appendChild(tdGender);
+                tr.appendChild(tdBirthday);
+                tr.appendChild(tdHobby);
+                tr.appendChild(tdColor);
+
+                // Dua tr vao tbody
+                tbody.appendChild(tr);
+
+                alert("Dang ky thanh cong!");
+            }
+
+            // Ham xoa du lieu Form
+            function clearForm() {
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+
+                document.getElementById("day").value = 1;
+                document.getElementById("month").value = 1;
+                document.getElementById("year").value = 1970;
+
+                var hobbies = document.getElementsByName("hobby");
+
+                for (var i = 0; i < hobbies.length; i++) {
+                    hobbies[i].checked = false;
+                }
+
+                document.getElementsByName("gender")[0].checked = true;
+                document.getElementsByName("color")[0].checked = true;
+            }
+
+            // Ham doi mau nen khi di chuyen chuot
+            function changeColor() {
+                var rows = document.getElementById("tbMembers").rows;
+
+                for (var i = 0; i < rows.length; i++) {
+                    rows[i].onmouseover = function() {
+                        this.style.backgroundColor = "yellow";
+                    };
+
+                    rows[i].onmouseout = function() {
+                        this.style.backgroundColor = "white";
+                    };
+                }
+            }
+        </script>
+    </head>
+    <body onload="loadDate()">
+        <h1>Đăng ký thành viên</h1>
+        <hr/>
+        <form>
+            <table>
+                <tr>
+                    <td>Tên(*)</td>
+                    <td>
+                    <input type="text" id="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ngày sinh(*)</td>
+                    <td>
+                        Ngày: <select id="day"></select>
+                        Tháng: <select id="month"></select>
+                        Năm: <select id="year"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Giới tính(*)</td>
+                    <td>
+                        <input type="radio" name="gender"
+                            value="Nam">Nam
+                        <input type="radio" name="gender"
+                            value="Nữ">Nữ
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email(*)</td>
+                    <td>
+                        <input type="text" id="email">
+                    </td>
+                </tr>
+            </table>
+            <p>Sở thích của bạn:</p>
+            <input type="checkbox" name="hobby" value="Mua sắm">Mua sắm<br>
+            <input type="checkbox" name="hobby" value="Du lịch">Du lịch<br>
+            <input type="checkbox" name="hobby" value="Tán gẫu">Tán gẫu<br>
+            <input type="checkbox" name="hobby" value="Đọc sách">Đọc sách<br>
+            <input type="checkbox" name="hobby" value="Nghe nhạc">Nghe nhạc<br>
+            <p>Màu yêu thích của bạn:</p>
+            <input type="radio" name="color" value="Màu xanh da trời"><label for="color-blue" style="background-color: blue; width: fit-content;">Màu xanh da trời</label>
+            <br>
+            <input type="radio" name="color" value="Màu đỏ"><label for="color-red" style="background-color: red; width: fit-content;">Màu đỏ</label>
+            <br>
+            <input type="radio" name="color" value="Màu vàng"><label for="color-yellow" style="background-color: yellow; width: fit-content;">Màu vàng</label>
+            <br>
+            <input type="radio" name="color" value="Màu xanh lá cây"><label for="color-green" style="background-color: green; width: fit-content;">Màu xanh lá cây</label>
+            <br>
+            <input type="radio" name="color" value="Màu xanh tím"><label for="color-purple" style="background-color: plum; width: fit-content;">Màu tím</label>
+            <br>
+            <button type="button" onclick="registerMember()">
+                Đăng ký
+            </button>
+            <button type="button" onclick="clearForm()">
+                Tiếp
+            </button>
+        </form>
+       <br>
+       <table border="1" id="tableMembers">
+            <thead style="background-color: blue; color: white;">
+                <tr>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Giới tính</th>
+                    <th>Ngày sinh</th>
+                    <th>Sở thích</th>
+                    <th>Màu yêu thích</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbMembers"
+                onmouseover="changeColor()">
+            </tbody>
+        </table> 
+    </body>
+</html>
